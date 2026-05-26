@@ -1,0 +1,15 @@
+---
+description: Hermes Agent local dev and Hostinger deploy conventions
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Hermes Agent (this repo)
+
+- Upstream: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent). Prefer forks + PRs for upstream changes.
+- Runtime state lives in `~/.hermes/` (never commit `.env`, `config.yaml` with secrets, or session DBs).
+- Dev install: editable `uv pip install -e ".[all,dev]"` in repo `venv/`; local CLI alias `hermes-dev` avoids clashing with production `hermes`.
+- Production on Hostinger: deploy via `deploy/hostinger/sync.sh` or `git pull` on VPS + `uv pip install -e ".[all]"` + restart gateway.
+- New capabilities: prefer **skills** over new **tools** unless integration requires harness code (see CONTRIBUTING.md).
+- After Python dep changes, bump pins in `pyproject.toml` and run `uv lock` per project policy.
