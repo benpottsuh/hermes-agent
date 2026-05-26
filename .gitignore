@@ -75,3 +75,8 @@ models-dev-upstream/
 hermes_cli/tui_dist/*
 hermes_cli/scripts/
 docs/superpowers/*
+
+# Hostinger deploy — local SSH target + auto-collected server report (no secrets)
+deploy/hostinger/hostinger.env
+deploy/hostinger/.server-context.md
+deploy/hostinger/.server-context.json
